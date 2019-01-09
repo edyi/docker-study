@@ -1,0 +1,19 @@
+version: '2'
+services:
+  server:
+    container_name: server
+    hostname: server
+    image: server:0.005
+    privileged: true
+    ports:
+      - "8080:80"
+      - "2222:22"
+
+  client:
+    container_name: client
+    hostname: client
+    image: client:0.005
+    privileged: true
+    ports:
+      - "8081:80"
+      - "2223:22"
