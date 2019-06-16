@@ -4,7 +4,7 @@
 - docker build -t server:0.001 .
 
 ### imageから起動する
-- docker run --hostname="master" --privileged -d -it -p 8080:80 -p 2222:22 --name master master:0.001 /sbin/init
+- docker run --hostname="master" --privileged -d -it -p 8080:80 -p 2222:22 --name master server:0.001 /sbin/init
 
 ### いろいろいじったあとはimageを保存する
 - docker stop master    
