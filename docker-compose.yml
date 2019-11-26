@@ -3,7 +3,7 @@ services:
   server:
     container_name: server
     hostname: server
-    image: server:0.005
+    image: server:001
     privileged: true
     ports:
       - "8080:80"
@@ -12,7 +12,7 @@ services:
   client:
     container_name: client
     hostname: client
-    image: client:0.005
+    image: client:001
     privileged: true
     ports:
       - "8081:80"
