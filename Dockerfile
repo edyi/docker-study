@@ -1,9 +1,6 @@
 FROM centos:7
 RUN yum -y update && yum clean all
 RUN yum reinstall -y glibc-common && yum clean all
-ENV LANG ja_JP.UTF-8
-ENV LANGUAGE ja_JP:ja
-ENV LC_ALL ja_JP.UTF-8
 RUN unlink /etc/localtime
 RUN ln -s /usr/share/zoneinfo/Japan /etc/localtime
 RUN yum -y install vim 
@@ -18,4 +15,9 @@ RUN yum -y install iproute
 RUN yum -y install jq
 RUN yum -y install nc
 RUN yum -y install wget tar make gcc autoconf bison re2c
+RUN localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
 RUN yum clean all
+ENV LANG="ja_JP.UTF-8" \
+    LANGUAGE="ja_JP:ja" \
+    LC_ALL="ja_JP.UTF-8"
+CMD ["/sbin/init"]
