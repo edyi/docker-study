@@ -1,14 +1,18 @@
 # docker-study
 
 ### Docker fileのある場所でビルドする
-- docker build -t server:0.001 .
+- docker build -t server:001 .
+
+### できたイメージからdocker-compose.yamlから起動できる
+- CMD ["/sbin/init"] を書いておかないと、exit 0で起動できないので注意。
+- そのときは、一度docker run ～ /sbin/init で起動してからcommitすればよい。
 
 ### imageから起動する
-- docker run --hostname="master" --privileged -d -it -p 8080:80 -p 2222:22 --name master server:0.001 /sbin/init
+- docker run --hostname="master" --privileged -d -it -p 8080:80 -p 2222:22 --name master server:001 /sbin/init
 
 ### いろいろいじったあとはimageを保存する
 - docker stop master    
-- docker commit master master:0.002    
+- docker commit master master:002    
 - docker rm master    
 
 ### 複数イメージができたらそれぞれを起動する docker-composeを書いて起動する
